@@ -54,7 +54,7 @@
             <artifactId>framework</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>./resource/framework-1.0.0.jar</systemPath>
+            <systemPath>${project.basedir}/resources/framework-1.0.0.jar</systemPath>
         </dependency>
 
         <dependency>
