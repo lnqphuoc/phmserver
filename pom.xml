@@ -52,7 +52,8 @@
         <dependency>
             <groupId>com.ygame</groupId>
             <artifactId>framework</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
+            <systemPath>./resource/framework-1.0.0.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -262,7 +263,7 @@
 
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
