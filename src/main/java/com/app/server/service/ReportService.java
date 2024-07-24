@@ -9,7 +9,6 @@ import com.app.server.enums.ResponseStatus;
 import com.app.server.response.ClientResponse;
 import com.ygame.framework.common.LogUtil;
 import com.ygame.framework.utils.ConvertUtils;
-import netscape.javascript.JSObject;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

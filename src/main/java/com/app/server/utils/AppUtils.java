@@ -7,7 +7,6 @@ import com.app.server.enums.Module;
 import com.app.server.enums.PriceDataType;
 import com.app.server.enums.PriceSettingType;
 import com.google.gson.reflect.TypeToken;
-import com.sun.javafx.binding.StringFormatter;
 import com.ygame.framework.common.Config;
 import com.ygame.framework.common.LogUtil;
 import com.ygame.framework.utils.ConvertUtils;
