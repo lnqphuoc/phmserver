@@ -1,0 +1,81 @@
+#!/bin/bash
+#ulimit -n 200000
+JAVA=/usr/bin/java
+echo $JAVA
+BASENAME=appserver
+BASEDIR=/root/appserver
+
+echo $BASEDIR
+SERVICEDAEMON=com.app.server.Application
+APPENV=development
+XMS=256M
+PIDFILE=$BASEDIR/tmp/$BASENAME.pid
+TMP_DIR=$BASEDIR/tmp
+if [ -d "$TMP_DIR" ]; then
+  # Take action if $DIR exists. #
+  mkdir -p $TMP_DIR
+fi
+
+JVM_OPTS="-Xmx$XMS -XX:SurvivorRatio=128 -XX:TargetSurvivorRatio=90 -XX:+AggressiveOpts -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=850 -XX:+CMSParallelRemarkEnabled -XX:MaxTenuringThreshold=0 -Duser.dir=$BASEDIR -Dapppath=$BASEDIR -Dappenv=$APPENV -Djava.io.tmpdir=$TMP_DIR"
+
+
+CLASSPATH=$BASEDIR/conf:$BASEDIR/bin
+
+for jar in $BASEDIR/lib/*.jar; do
+    CLASSPATH=$CLASSPATH:$jar
+done
+
+for jar in $BASEDIR/*.jar; do
+    CLASSPATH=$CLASSPATH:$jar
+done
+
+JVM_OPTS="$JVM_OPTS -cp $CLASSPATH $SERVICEDAEMON"
+
+function _start()
+{
+	echo -n "Starting $BASENAME: "
+	/usr/sbin/start-stop-daemon --start --background --quiet --make-pidfile --pidfile $PIDFILE --exec $JAVA -- ${JVM_OPTS} 
+	if [ "$?" -eq "0" ];then
+		echo "OK"
+	else 
+		echo "FAIL"
+	fi
+}
+
+function _debug()
+{
+    echo -n "Starting $BASENAME in debug mode"
+    /usr/sbin/start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $JAVA -- ${JVM_OPTS}
+}
+
+function _stop()
+{
+	echo -n "Stoping $BASENAME: "
+	/usr/sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
+        if [ "$?" -eq "0" ];then
+                echo "OK"
+        else
+                echo "FAIL"
+        fi
+}	
+
+case "$1" in
+	start)
+		_start
+		;;
+	stop)
+		_stop
+		;;
+	debug)
+		_debug
+		;;
+	restart)
+		_stop
+		sleep 3
+		_start
+		;;
+	*)
+		echo "Usage: ./javaConsole {start|stop|debug|restart}"
+		exit 1
+
+esac
