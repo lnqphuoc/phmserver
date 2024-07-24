@@ -47,6 +47,8 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/resources/lombok-1.18.8</systemPath>
         </dependency>
 
         <dependency>
