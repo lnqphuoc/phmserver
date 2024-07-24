@@ -4,6 +4,8 @@ import com.app.server.config.ConfigInfo;
 import com.ygame.framework.common.LogUtil;
 import com.ygame.framework.memcache.RedisFactory;
 
+import redis.clients.jedis.Jedis;
+
 public class TestRD {
 
 	public static String getData(String token) {
