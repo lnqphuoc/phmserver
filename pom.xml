@@ -53,6 +53,7 @@
             <groupId>com.ygame</groupId>
             <artifactId>framework</artifactId>
             <version>1.0.0</version>
+            <scope>import</scope>
         </dependency>
 
         <dependency>
