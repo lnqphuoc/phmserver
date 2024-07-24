@@ -46,9 +46,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
+            <version>1.18.34</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/resources/lombok-1.18.8.jar</systemPath>
+            <systemPath>${project.basedir}/resources/lombok.jar</systemPath>
         </dependency>
 
         <dependency>
