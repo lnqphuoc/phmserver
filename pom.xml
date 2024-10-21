@@ -262,6 +262,20 @@
                     </archive>
                 </configuration>
             </plugin>
+                 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version> <!-- Phiên bản có thể thay đổi -->
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.8</version> <!-- Phiên bản Lombok -->
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
         </plugins>
 
         <resources>
